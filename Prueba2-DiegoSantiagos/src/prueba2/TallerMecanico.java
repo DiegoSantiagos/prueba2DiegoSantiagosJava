@@ -21,20 +21,21 @@ public class TallerMecanico {
         System.out.println("Ingrese el tipo de vehiculo: \n1 para Automovil \n2 para Motocicleta ");
         int tipo = leerTeclado.nextInt();
         leerTeclado.nextLine();
+
         if (tipo != 1 && tipo != 2) {
             System.out.println("Tipo de vehiculo no valido");
-            leerTeclado.close();
             return;
         }
+
         System.out.println("Ingrese la patente del vehiculo: ");
         String patente = leerTeclado.next();
+
         if (patente.isEmpty()) {
             System.out.println("La patente no puede estar vacia. No se creo el vehiculo");
-            leerTeclado.close();
             return;
+
         } else if (patente.length() != 6) {
             System.out.println("La patente debe tener 6 caracteres. No se creo el vehiculo");
-            leerTeclado.close();
             return;
         }
         leerTeclado.nextLine();
@@ -117,7 +118,7 @@ public class TallerMecanico {
 
     public static void ListarVehiculos() {
         for (Vehiculo vehiculo : vehiculos) {
-            vehiculo.imprimitBoleta();
+            System.out.println(vehiculo.imprimitBoleta());
         }
     }
 

@@ -41,24 +41,26 @@ public class Motocicleta extends Vehiculo {
     @Override
     public String imprimitBoleta() {
         return """
-               ---------Boleta---------
-               Patente: """ + this.patente + "\n" +
+                ---------Boleta---------
+                Patente: """ + this.patente + "\n" +
                 "Marca: " + this.marca + "\n" +
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +
                 "Precio Neto: " + this.precioNeto + "\n" +
                 "Descuento: " + descuento_moto + "\n" +
-                "IVA: " + (iva * precioNeto) + "\n" +
+                "IVA: " + iva + "\n" +
                 "Precio Total: " + this.precioTotal;
     }
 
     @Override
     public double totalIva() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public double obtenerDescuento(double precioNeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

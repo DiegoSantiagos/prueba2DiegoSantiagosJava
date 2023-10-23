@@ -47,17 +47,19 @@ public class Automovil extends Vehiculo {
                 "Color: " + this.color + "\n" +
                 "Precio Neto: " + this.precioNeto + "\n" +
                 "Descuento: " + descuento_auto + "\n" +
-                "IVA: " + (iva * precioNeto) + "\n" +
+                "IVA: " + iva + "\n" +
                 "Precio Total: " + this.precioTotal;
     }
 
     @Override
     public double totalIva() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public double obtenerDescuento(double precioNeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

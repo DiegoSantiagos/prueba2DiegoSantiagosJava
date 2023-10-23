@@ -87,8 +87,9 @@ public abstract class Vehiculo implements IParametros {
     }
 
     public String imprimitBoleta() {
-        return "---------Boleta---------\n" +
-                "Patente: " + this.patente + "\n" +
+        return """
+               ---------Boleta---------
+               Patente: """ + this.patente + "\n" +
                 "Marca: " + this.marca + "\n" +
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +

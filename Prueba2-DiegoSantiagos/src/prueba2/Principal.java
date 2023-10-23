@@ -40,7 +40,6 @@ public class Principal {
                     System.out.println("Ingrese la patente del vehiculo: ");
                     String patente_Eliminar = leerTeclado.next();
                     TallerMecanico.eliminarVehiculo(patente_Eliminar);
-                    leerTeclado.close();
                     break;
                 }
                 case 5:
