@@ -5,6 +5,16 @@ public class Motocicleta extends Vehiculo {
     String estilo;
     int medidaManillar;
 
+    public Motocicleta() {
+        this.patente = "";
+        this.marca = "";
+        this.modelo = "";
+        this.color = "";
+        this.precioNeto = 0;
+        this.estilo = "";
+        this.medidaManillar = 0;
+    }
+
     public Motocicleta(String patente, String marca, String modelo, String color, double precioNeto,
             String estilo, int medidaManillar) {
         super(patente, marca, modelo, color, precioNeto);
@@ -29,15 +39,26 @@ public class Motocicleta extends Vehiculo {
     }
 
     @Override
-    public void imprimitBoleta() {
-        System.out.println("---------Boleta---------");
-        System.out.println("Patente:      " + this.patente);
-        System.out.println("Marca:        " + this.marca);
-        System.out.println("Modelo:       " + this.modelo);
-        System.out.println("Color:        " + this.color);
-        System.out.println("Precio Neto:  " + this.precioNeto);
-        System.out.println("Descuento:    " + this.Descuento);
-        System.out.println("IVA:          " + this.Iva);
-        System.out.println("Precio Total: " + this.precioTotal);
+    public String imprimitBoleta() {
+        return """
+               ---------Boleta---------
+               Patente: """ + this.patente + "\n" +
+                "Marca: " + this.marca + "\n" +
+                "Modelo: " + this.modelo + "\n" +
+                "Color: " + this.color + "\n" +
+                "Precio Neto: " + this.precioNeto + "\n" +
+                "Descuento: " + descuento_moto + "\n" +
+                "IVA: " + (iva * precioNeto) + "\n" +
+                "Precio Total: " + this.precioTotal;
+    }
+
+    @Override
+    public double totalIva() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public double obtenerDescuento(double precioNeto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

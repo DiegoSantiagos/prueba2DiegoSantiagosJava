@@ -7,8 +7,6 @@ public abstract class Vehiculo implements IParametros {
     String modelo;
     String color;
     double precioNeto;
-    double Descuento;
-    double Iva;
     double precioTotal;
 
     public Vehiculo() {
@@ -17,8 +15,6 @@ public abstract class Vehiculo implements IParametros {
         this.modelo = "";
         this.color = "";
         this.precioNeto = 0;
-        this.Descuento = 0;
-        this.Iva = 0;
         this.precioTotal = 0;
     }
 
@@ -28,21 +24,7 @@ public abstract class Vehiculo implements IParametros {
         this.modelo = modelo;
         this.color = color;
         this.precioNeto = precioNeto;
-        this.Descuento = obtenerDescuento(precioNeto);
-        this.Iva = totalIva();
-        this.precioTotal = precioNeto + Iva - Descuento;
-    }
-
-    public double totalIva() {
-        return this.precioNeto * iva;
-    }
-
-    public double obtenerDescuento(double precioNeto) {
-        if (this instanceof Automovil) {
-            return precioNeto * descuento_auto;
-        } else {
-            return precioNeto * descuento_moto;
-        }
+        this.precioTotal = precioNeto;
     }
 
     public String getPatente() {
@@ -83,30 +65,37 @@ public abstract class Vehiculo implements IParametros {
 
     public void setPrecioNeto(double precioNeto) {
         this.precioNeto = precioNeto;
+        setPrecioTotal();
     }
 
-    public double getDescuento() {
-        return Descuento;
-    }
-
-    public void setDescuento(double Descuento) {
-        this.Descuento = Descuento;
-    }
-
-    public double getIva() {
-        return Iva;
-    }
-
-    public void setIva(double Iva) {
-        this.Iva = Iva;
+    public double Descuento() {
+        if (this instanceof Automovil) {
+            double descuento = precioNeto * (100 - descuento_auto);
+            return descuento;
+        } else {
+            double descuento = precioNeto * (100 - descuento_moto);
+            return descuento;
+        }
     }
 
     public double getPrecioTotal() {
         return precioTotal;
     }
 
-    public void setPrecioTotal(double precioTotal) {
-        this.precioTotal = precioTotal;
+    public void setPrecioTotal() {
+        this.precioTotal = (precioNeto * Descuento()) + (iva * precioNeto);
+    }
+
+    public String imprimitBoleta() {
+        return "---------Boleta---------\n" +
+                "Patente: " + this.patente + "\n" +
+                "Marca: " + this.marca + "\n" +
+                "Modelo: " + this.modelo + "\n" +
+                "Color: " + this.color + "\n" +
+                "Precio Neto: " + this.precioNeto + "\n" +
+                "Descuento: " + Descuento() + "\n" +
+                "IVA: " + (iva * precioNeto) + "\n" +
+                "Precio Total: " + this.precioTotal;
     }
 
 }
