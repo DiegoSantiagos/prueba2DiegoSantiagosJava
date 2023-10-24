@@ -13,6 +13,7 @@ public class TallerMecanico {
     }
 
     public static void anadirauto(Vehiculo auto) {
+
         vehiculos.add(auto);
     }
 
@@ -36,6 +37,9 @@ public class TallerMecanico {
 
         } else if (patente.length() != 6) {
             System.out.println("La patente debe tener 6 caracteres. No se creo el vehiculo");
+            return;
+        } else if (vehiculos.stream().anyMatch(v -> v.getPatente().equals(patente))) {
+            System.out.println("La patente ya existe, no se puede agregar");
             return;
         }
         leerTeclado.nextLine();
@@ -93,14 +97,14 @@ public class TallerMecanico {
     }
 
     public static void mostrarTotalAPagarPorPatente() {
-        Scanner leerTeclado = new Scanner(System.in);
+        Scanner leerTeclado3 = new Scanner(System.in);
         System.out.println("Ingrese la patente del vehiculo: ");
-        String patente = leerTeclado.next();
+        String patente = leerTeclado3.next();
         if (patente.isEmpty()) {
-            System.out.println("La patente no puede estar vacia.");
+            System.out.println("La patente no puede estar vacia. No se creo el vehiculo");
             return;
         } else if (patente.length() != 6) {
-            System.out.println("La patente debe tener 6 caracteres.");
+            System.out.println("La patente debe tener 6 caracteres. No se creo el vehiculo");
             return;
         }
         boolean encontrado = false;

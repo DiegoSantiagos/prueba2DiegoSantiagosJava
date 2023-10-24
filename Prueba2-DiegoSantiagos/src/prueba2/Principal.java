@@ -8,13 +8,13 @@ public class Principal {
     public static void main(String[] args) {
 
         // make a motorbike
-        Motocicleta moto1 = new Motocicleta("ABC123", "Yamaha", "YBR", "Rojo", 1000000, "Deportiva", 30);
+        Motocicleta moto1 = new Motocicleta("ABCD12", "Yamaha", "YBR", "Rojo", 1000000, "Deportiva", 30);
         TallerMecanico.anadirmoto(moto1);
 
         int opcion = 0;
-        Scanner leerTeclado = new Scanner(System.in);
-        while (opcion != 6) {
 
+        while (opcion != 6) {
+            Scanner leerTeclado = new Scanner(System.in);
             System.out.println("______MENU______");
             System.out.println("1. Ingresar Automovil");
             System.out.println("2. Mostrar total a pagar por patente");
@@ -53,5 +53,6 @@ public class Principal {
                     break;
             }
         }
+
     }
 }

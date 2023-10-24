@@ -38,6 +38,7 @@ public class Motocicleta extends Vehiculo {
         this.medidaManillar = medidaManillar;
     }
 
+
     @Override
     public String mostrarDatos() {
         return """
@@ -46,7 +47,9 @@ public class Motocicleta extends Vehiculo {
                 "Marca: " + this.marca + "\n" +
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +
-                "Precio Neto: " + this.precioNeto;
+                "Precio Neto: " + this.precioNeto + "\n" +
+                "Estilo: " + this.estilo + "\n" +
+                "Medida Manillar: " + this.medidaManillar;
     }
 
     @Override

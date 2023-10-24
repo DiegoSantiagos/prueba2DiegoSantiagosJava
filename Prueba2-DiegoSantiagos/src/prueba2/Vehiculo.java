@@ -40,8 +40,6 @@ public abstract class Vehiculo implements IParametros {
             System.out.println("La patente debe tener 6 caracteres");
         } else if (patente.isEmpty()) {
             System.out.println("La patente no puede estar vacia");
-        } else if (vehiculos.stream().anyMatch(v -> v.getPatente().equals(patente))) {
-            System.out.println("La patente ya existe");
         } else
             this.patente = patente;
     }
@@ -122,7 +120,6 @@ public abstract class Vehiculo implements IParametros {
                 "IVA: " + this.ivaPagar + "\n" +
                 "Precio Total: " + this.precioTotal;
     }
-
     public String mostrarDatos() {
         return """
                 ---------Datos---------
@@ -131,5 +128,8 @@ public abstract class Vehiculo implements IParametros {
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +
                 "Precio Neto: " + this.precioNeto;
+       
+
     }
+
 }

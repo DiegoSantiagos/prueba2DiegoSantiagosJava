@@ -46,7 +46,9 @@ public class Automovil extends Vehiculo {
                 "Marca: " + this.marca + "\n" +
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +
-                "Precio Neto: " + this.precioNeto;
+                "Precio Neto: " + this.precioNeto + "\n" +
+                "Cantidad de Puertas: " + this.cantidadPuertas + "\n" +
+                "Capacidad Maletero: " + this.capacidadMaletero;
     }
 
     @Override
