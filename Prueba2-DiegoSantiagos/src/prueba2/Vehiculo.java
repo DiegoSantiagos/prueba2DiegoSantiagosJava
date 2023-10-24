@@ -8,6 +8,8 @@ public abstract class Vehiculo implements IParametros {
     String color;
     double precioNeto;
     double precioTotal;
+    double valorDescuento;
+    double ivaPagar;
 
     public Vehiculo() {
         this.patente = "";
@@ -16,6 +18,8 @@ public abstract class Vehiculo implements IParametros {
         this.color = "";
         this.precioNeto = 0;
         this.precioTotal = 0;
+        this.valorDescuento = 0;
+        this.ivaPagar = 0;
     }
 
     public Vehiculo(String patente, String marca, String modelo, String color, double precioNeto) {
@@ -23,8 +27,7 @@ public abstract class Vehiculo implements IParametros {
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
-        this.precioNeto = precioNeto;
-        this.precioTotal = precioNeto;
+        setPrecioNeto(precioNeto);
     }
 
     public String getPatente() {
@@ -32,7 +35,15 @@ public abstract class Vehiculo implements IParametros {
     }
 
     public void setPatente(String patente) {
-        this.patente = patente;
+
+        if (patente.length() != 6) {
+            System.out.println("La patente debe tener 6 caracteres");
+        } else if (patente.isEmpty()) {
+            System.out.println("La patente no puede estar vacia");
+        } else if (vehiculos.stream().anyMatch(v -> v.getPatente().equals(patente))) {
+            System.out.println("La patente ya existe");
+        } else
+            this.patente = patente;
     }
 
     public String getMarca() {
@@ -65,17 +76,30 @@ public abstract class Vehiculo implements IParametros {
 
     public void setPrecioNeto(double precioNeto) {
         this.precioNeto = precioNeto;
+        setValorDescuento();
+        setIvaPagar();
         setPrecioTotal();
     }
 
-    public double Descuento() {
+    public double getValorDescuento() {
+        return valorDescuento;
+
+    }
+
+    public void setValorDescuento() {
         if (this instanceof Automovil) {
-            double descuento = precioNeto * (100 - descuento_auto);
-            return descuento;
+            this.valorDescuento = precioNeto * descuento_auto;
         } else {
-            double descuento = precioNeto * (100 - descuento_moto);
-            return descuento;
+            this.valorDescuento = precioNeto * descuento_moto;
         }
+    }
+
+    public double getIvaPagar() {
+        return ivaPagar;
+    }
+
+    public void setIvaPagar() {
+        this.ivaPagar = iva * precioNeto;
     }
 
     public double getPrecioTotal() {
@@ -83,20 +107,29 @@ public abstract class Vehiculo implements IParametros {
     }
 
     public void setPrecioTotal() {
-        this.precioTotal = (precioNeto * Descuento()) + (iva * precioNeto);
+        this.precioTotal = precioNeto - valorDescuento + ivaPagar;
     }
 
     public String imprimitBoleta() {
         return """
-               ---------Boleta---------
-               Patente: """ + this.patente + "\n" +
+                ---------Boleta---------
+                Patente: """ + this.patente + "\n" +
                 "Marca: " + this.marca + "\n" +
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +
                 "Precio Neto: " + this.precioNeto + "\n" +
-                "Descuento: " + Descuento() + "\n" +
-                "IVA: " + (iva * precioNeto) + "\n" +
+                "Descuento: " + this.valorDescuento + "\n" +
+                "IVA: " + this.ivaPagar + "\n" +
                 "Precio Total: " + this.precioTotal;
     }
 
+    public String mostrarDatos() {
+        return """
+                ---------Datos---------
+                Patente: """ + this.patente + "\n" +
+                "Marca: " + this.marca + "\n" +
+                "Modelo: " + this.modelo + "\n" +
+                "Color: " + this.color + "\n" +
+                "Precio Neto: " + this.precioNeto;
+    }
 }

@@ -39,16 +39,14 @@ public class Automovil extends Vehiculo {
     }
 
     @Override
-    public String imprimitBoleta() {
-        return "---------Boleta---------\n" +
-                "Patente: " + this.patente + "\n" +
+    public String mostrarDatos() {
+        return """
+                ---------Datos---------
+                Patente: """ + this.patente + "\n" +
                 "Marca: " + this.marca + "\n" +
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +
-                "Precio Neto: " + this.precioNeto + "\n" +
-                "Descuento: " + descuento_auto + "\n" +
-                "IVA: " + iva + "\n" +
-                "Precio Total: " + this.precioTotal;
+                "Precio Neto: " + this.precioNeto;
     }
 
     @Override

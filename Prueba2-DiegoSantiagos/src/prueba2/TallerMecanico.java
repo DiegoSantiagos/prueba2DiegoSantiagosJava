@@ -93,14 +93,14 @@ public class TallerMecanico {
     }
 
     public static void mostrarTotalAPagarPorPatente() {
-        Scanner leerTeclado3 = new Scanner(System.in);
+        Scanner leerTeclado = new Scanner(System.in);
         System.out.println("Ingrese la patente del vehiculo: ");
-        String patente = leerTeclado3.next();
+        String patente = leerTeclado.next();
         if (patente.isEmpty()) {
-            System.out.println("La patente no puede estar vacia. No se creo el vehiculo");
+            System.out.println("La patente no puede estar vacia.");
             return;
         } else if (patente.length() != 6) {
-            System.out.println("La patente debe tener 6 caracteres. No se creo el vehiculo");
+            System.out.println("La patente debe tener 6 caracteres.");
             return;
         }
         boolean encontrado = false;

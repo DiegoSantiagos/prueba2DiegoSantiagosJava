@@ -39,17 +39,14 @@ public class Motocicleta extends Vehiculo {
     }
 
     @Override
-    public String imprimitBoleta() {
+    public String mostrarDatos() {
         return """
-                ---------Boleta---------
+                ---------Datos---------
                 Patente: """ + this.patente + "\n" +
                 "Marca: " + this.marca + "\n" +
                 "Modelo: " + this.modelo + "\n" +
                 "Color: " + this.color + "\n" +
-                "Precio Neto: " + this.precioNeto + "\n" +
-                "Descuento: " + descuento_moto + "\n" +
-                "IVA: " + iva + "\n" +
-                "Precio Total: " + this.precioTotal;
+                "Precio Neto: " + this.precioNeto;
     }
 
     @Override
